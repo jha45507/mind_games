@@ -36,7 +36,6 @@ const HomePage = () => {
                             <img className='' src="/images/Amator_Logo.png" alt="" />
                         </div>
                         <div className='text-sm text-center my-5 space-y-10 lg:space-y-0 lg:space-x-10 flex items-center flex-col lg:flex-row text-white overflow-hidden'>
-                            {/* <Link onClick={closeNavbar} href="#">SERVICES</Link> */}
                             <Link onClick={closeNavbar} href="#">ABOUT</Link>
                             <Link onClick={closeNavbar} href="#">ENROLL</Link>
                             <Link onClick={closeNavbar} href="#">LOCATION</Link>
