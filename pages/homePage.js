@@ -1,14 +1,16 @@
-// import React from 'react'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/Link'
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { AiFillWallet } from "react-icons/ai";
 import { GiPodiumWinner } from "react-icons/gi";
 import { ImArrowRight } from "react-icons/im";
+
 const HomePage = () => {
 
     const headeRef = useRef();
     const hamRef = useRef();
+    const [countDown, setCountDown] = useState(false)
+
     const hamclick = () => {
         if (hamRef.current.classList.contains('ham')) {
             hamRef.current.classList.toggle('ham-active')
@@ -26,6 +28,40 @@ const HomePage = () => {
         headeRef.current.classList.replace('h-auto', 'h-20')
         hamRef.current.classList.remove('ham-active')
     }
+
+    useEffect(() => {
+        // Set the date we're counting down to
+        var countDownDate = new Date("Dec 22, 2022 00:00:00").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result in an element with id="demo"
+            document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+            // If the count down is over, write some text 
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+
+
+    }, [])
+
     return (
         <>
             <div className='bg-white'>
@@ -36,10 +72,10 @@ const HomePage = () => {
                             <img className='' src="/images/Amator_Logo.png" alt="" />
                         </div>
                         <div className='text-sm text-center my-5 space-y-10 lg:space-y-0 lg:space-x-10 flex items-center flex-col lg:flex-row text-white overflow-hidden'>
-                            <Link onClick={closeNavbar} href="#">ABOUT</Link>
-                            <Link onClick={closeNavbar} href="#">ENROLL</Link>
-                            <Link onClick={closeNavbar} href="#">LOCATION</Link>
-                            <Link onClick={closeNavbar} href="#">CONTACT</Link>
+                            <Link onClick={closeNavbar} href="#about">ABOUT</Link>
+                            <Link onClick={closeNavbar} href="#enroll">ENROLL</Link>
+                            <Link onClick={closeNavbar} href="#location">LOCATION</Link>
+                            <Link onClick={closeNavbar} href="#referral">REFERRAL</Link>
                         </div>
                     </div>
                 </navbar>
@@ -57,7 +93,9 @@ const HomePage = () => {
                             <h1 className='text-center lg:text-xl font-bold'>NEXT MATCH</h1>
                         </div>
                         <div>
-                            <h1 className='text-center lg:text-xl font-bold'>00: 00: 00: 00</h1>
+                            <h1 id='demo' className='text-center lg:text-xl font-bold'>
+
+                            </h1>
                         </div>
                         <div>
                             <h1 className='text-center lg:text-xl font-bold'>Days Hrs Min Sec</h1>
@@ -73,7 +111,7 @@ const HomePage = () => {
                     </div>
                 </div>
 
-                <section className='flex lg:justify-around flex-col lg:flex-row py-5 lg:py-0 items-center bg-white text-black font-bold lg:h-96 '>
+                <section className='flex lg:justify-around flex-col lg:flex-row py-5 lg:py-0 items-center bg-white text-black font-bold lg:h-96 ' id='enroll'>
                     <div className='h-60 w-60 flex justify-around items-center border rounded-lg'>
                         <div className='flex-col flex justify-center items-center space-y-4'>
                             <AiOutlineUserAdd className='text-white w-20 h-20 bg-[#fd295a] p-5 rounded-full' />
@@ -101,7 +139,7 @@ const HomePage = () => {
                 </section>
                 <hr />
                 <div className='bgimg lg:h-[105vh] h-[100%] lg:space-y-10'>
-                    <about className=' py-10 flex justify-center items-center'>
+                    <about className=' py-10 flex justify-center items-center' id="about">
                         <div className='w-2/4 space-y-10 lg:space-y-20'>
                             <div className=' flex justify-center items-center lg:text-4xl text-2xl text-white font-bold'>
                                 <h1 className='text-center'>ABOUT AMATOR</h1>
@@ -111,30 +149,30 @@ const HomePage = () => {
                             </div>
                         </div>
                     </about>
-                    <location className='flex lg:justify-around flex-col lg:flex-row py-5 lg:py-0 space-y-5 lg:space-y-0 items-center text-white font-bold h-auto'>
+                    <location className='flex lg:justify-around flex-col lg:flex-row py-5 lg:py-0 space-y-5 lg:space-y-0 items-center text-white font-bold h-auto' id='location'>
                         <div className=' flex justify-around items-center'>
-                            <div className='h-60 w-60 flex-col flex justify-center items-center space-y-4 bg-transparent backdrop-blur-md border rounded-2xl back_shadow1 z-0'>
+                            <div className='h-60 w-60 flex-col flex justify-center items-center space-y-4 bg-transparent backdrop-blur-md border rounded-2xl back_shadow1 z-0 hover:bg-indigo-900'>
                                 <h1 className='text-xl'>Kolkata</h1>
                                 <p>December 26</p>
                                 {/* <button className='bg-[#fd295a] px-3 py-1 rounded-full'>Bet Now</button> */}
                             </div>
                         </div>
                         <div className='flex justify-around items-center'>
-                            <div className='h-60 w-60  flex-col flex justify-center items-center space-y-4 br-transparent backdrop-blur-sm  border rounded-2xl back_shadow1'>
+                            <div className='h-60 w-60  flex-col flex justify-center items-center space-y-4 br-transparent backdrop-blur-sm  border rounded-2xl back_shadow1 hover:bg-indigo-900'>
                                 <h1 className='text-xl'>Mumbai</h1>
                                 <p>Coming Soon</p>
                                 {/* <button className='bg-[#fd295a] px-3 py-1 rounded-full'>Bet Now</button> */}
                             </div>
                         </div>
                         <div className=' flex justify-around items-center'>
-                            <div className='h-60 w-60 flex-col flex justify-center items-center space-y-4 br-transparent border backdrop-blur-sm rounded-2xl back_shadow1'>
+                            <div className='h-60 w-60 flex-col flex justify-center items-center space-y-4 br-transparent border backdrop-blur-sm rounded-2xl back_shadow1 hover:bg-indigo-900'>
                                 <h1 className='text-xl'>Delhi</h1>
                                 <p>Coming Soon</p>
                                 {/* <button className='bg-[#fd295a] px-3 py-1 rounded-full'>Bet Now</button> */}
                             </div>
                         </div>
                         <div className=' flex justify-around items-center '>
-                            <div className='h-60 w-60 flex-col flex justify-center items-center space-y-4 br-transparent backdrop-blur-sm border rounded-2xl back_shadow1'>
+                            <div className='h-60 w-60 flex-col flex justify-center items-center space-y-4 br-transparent backdrop-blur-sm border rounded-2xl back_shadow1 hover:bg-indigo-900'>
                                 <h1 className='text-xl'>Jaypur</h1>
                                 <p>Coming Soon</p>
                                 {/* <button className='bg-[#fd295a] px-3 py-1 rounded-full'>Bet Now</button> */}
@@ -172,14 +210,14 @@ const HomePage = () => {
 
                     </div>
                 </news>
-                <footer className='flex justify-center items-center bg-white'>
-                    <div className='flex flex-col lg:flex-row bg-blue-600 justify-between items-center rounded-lg my-10 w-3/4 text-white'>
+                <footer className='flex justify-center items-center bg-white' id='referral'>
+                    <div className='flex flex-col lg:flex-row bg-indigo-900 justify-between items-center rounded-lg my-10 w-3/4 text-white'>
                         <div className='p-5'>
                             <h1 className='font-bold '>SUBSCRIBE</h1>
                             <h1 className='font-bold mt-3 text-2xl '>FOR NEWSLETTER</h1>
                         </div>
                         <div className='p-5'>
-                            <input type="email" name="" id="" className='text-white outline-none border-b-2 bg-blue-600' placeholder='Enter Your Email Address' />
+                            <input type="email" name="" id="" className='text-white outline-none border-b-2 bg-indigo-900' placeholder='Enter Your Email Address' />
                         </div>
                         <div className='p-5'>
                             <button className='font-bold text-xl bg-[#fd295a] py-2 px-5 rounded-full'>Subscribe Now</button>

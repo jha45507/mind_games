@@ -81,6 +81,10 @@ body {
   background-color: white;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: rbg(--foreground-rgb);
   background: linear-gradient(to bottom,
