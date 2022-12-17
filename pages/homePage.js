@@ -29,8 +29,8 @@ const HomePage = () => {
     return (
         <>
             <div className='bg-white'>
-                <navbar className='z-10'>
-                    <div ref={headeRef} className='lg:flex fixed w-full bg-blue-900 justify-around items-center shadow-md font-bold h-20 overflow-hidden'>
+                <navbar className='z-50'>
+                    <div ref={headeRef} className='lg:flex fixed w-full bg-indigo-900 justify-around items-center shadow-md font-bold h-20 overflow-hidden z-20'>
                         <div ref={hamRef} className='lg:hidden ham' onClick={hamclick} ></div>
                         <div className='w-[100px]'>
                             <img className='' src="/images/Amator_Logo.png" alt="" />
@@ -77,11 +77,11 @@ const HomePage = () => {
                     <div className='h-60 w-60 flex justify-around items-center border rounded-lg'>
                         <div className='flex-col flex justify-center items-center space-y-4'>
                             <AiOutlineUserAdd className='text-white w-20 h-20 bg-[#fd295a] p-5 rounded-full' />
-                            <p>ENROLL</p>
+                            <p className=''>ENROLL</p>
                         </div>
                     </div>
                     <div>
-                        <ImArrowRight className='w-16 h-16 text-[#fd295a]' />
+                        <ImArrowRight className='w-16 h-16 text-[#fd295a] rotate-90 lg:rotate-0 my-5' />
                     </div>
                     <div className='h-60 w-60 flex justify-around items-center border rounded-lg'>
                         <div className='flex-col flex justify-center items-center space-y-4'>
@@ -90,7 +90,7 @@ const HomePage = () => {
                         </div>
                     </div>
                     <div>
-                        <ImArrowRight className='w-16 h-16 text-[#fd295a]' />
+                        <ImArrowRight className='w-16 h-16 text-[#fd295a] rotate-90 lg:rotate-0 my-5' />
                     </div>
                     <div className='h-60 w-60 flex justify-around items-center border rounded-lg'>
                         <div className='flex-col flex justify-center items-center space-y-4'>
@@ -100,50 +100,52 @@ const HomePage = () => {
                     </div>
                 </section>
                 <hr />
-                <about className='bg-white py-10 flex justify-center items-center'>
-                    <div className='w-2/4 space-y-10'>
-                        <div className='bg-white flex justify-center items-center lg:text-4xl text-2xl text-black font-bold'>
-                            <h1 className='text-center'>ABOUT AMATOR</h1>
+                <div className='bgimg lg:h-[105vh] h-[100%] lg:space-y-10'>
+                    <about className=' py-10 flex justify-center items-center'>
+                        <div className='w-2/4 space-y-10 lg:space-y-20'>
+                            <div className=' flex justify-center items-center lg:text-4xl text-2xl text-white font-bold'>
+                                <h1 className='text-center'>ABOUT AMATOR</h1>
+                            </div>
+                            <div className='flex justify-center items-center text-white text-justify'>
+                                <p>The 5-day poker festival is expected to draw players from all across the country with a sizeable participation from the enthusiastic local poker community. Organizers are offering free return tickets (ex-India) along with luxury accommodation to all players who confirm their participation in this mega event on or before December 18th.</p>
+                            </div>
                         </div>
-                        <div className='bg-white flex justify-center items-center text-gray-700 text-justify'>
-                            <p>The 5-day poker festival is expected to draw players from all across the country with a sizeable participation from the enthusiastic local poker community. Organizers are offering free return tickets (ex-India) along with luxury accommodation to all players who confirm their participation in this mega event on or before December 18th.</p>
+                    </about>
+                    <location className='flex lg:justify-around flex-col lg:flex-row py-5 lg:py-0 space-y-5 lg:space-y-0 items-center text-white font-bold h-auto'>
+                        <div className=' flex justify-around items-center'>
+                            <div className='h-60 w-60 flex-col flex justify-center items-center space-y-4 bg-transparent backdrop-blur-md border rounded-2xl back_shadow1 z-0'>
+                                <h1 className='text-xl'>Kolkata</h1>
+                                <p>December 26</p>
+                                {/* <button className='bg-[#fd295a] px-3 py-1 rounded-full'>Bet Now</button> */}
+                            </div>
                         </div>
-                    </div>
-                </about>
-                <location className='flex lg:justify-around flex-col lg:flex-row py-5 lg:py-0 space-y-5 lg:space-y-0 items-center bg-white text-black font-bold h-auto'>
-                    <div className=' flex justify-around items-center border rounded-lg bg-gray-200'>
-                        <div className='h-60 w-60 flex-col flex justify-center items-center space-y-4'>
-                            <h1>Kolkata</h1>
-                            <p>December 26</p>
-                            {/* <button className='bg-[#fd295a] px-3 py-1 rounded-full'>Bet Now</button> */}
+                        <div className='flex justify-around items-center'>
+                            <div className='h-60 w-60  flex-col flex justify-center items-center space-y-4 br-transparent backdrop-blur-sm  border rounded-2xl back_shadow1'>
+                                <h1 className='text-xl'>Mumbai</h1>
+                                <p>Coming Soon</p>
+                                {/* <button className='bg-[#fd295a] px-3 py-1 rounded-full'>Bet Now</button> */}
+                            </div>
                         </div>
-                    </div>
-                    <div className='flex justify-around items-center border rounded-lg bg-gray-200'>
-                        <div className='h-60 w-60  flex-col flex justify-center items-center space-y-4'>
-                            <h1>Mumbai</h1>
-                            <p>Coming Soon</p>
-                            {/* <button className='bg-[#fd295a] px-3 py-1 rounded-full'>Bet Now</button> */}
+                        <div className=' flex justify-around items-center'>
+                            <div className='h-60 w-60 flex-col flex justify-center items-center space-y-4 br-transparent border backdrop-blur-sm rounded-2xl back_shadow1'>
+                                <h1 className='text-xl'>Delhi</h1>
+                                <p>Coming Soon</p>
+                                {/* <button className='bg-[#fd295a] px-3 py-1 rounded-full'>Bet Now</button> */}
+                            </div>
                         </div>
-                    </div>
-                    <div className=' flex justify-around items-center border rounded-lg bg-gray-200'>
-                        <div className='h-60 w-60 flex-col flex justify-center items-center space-y-4'>
-                            <h1>Delhi</h1>
-                            <p>Coming Soon</p>
-                            {/* <button className='bg-[#fd295a] px-3 py-1 rounded-full'>Bet Now</button> */}
+                        <div className=' flex justify-around items-center '>
+                            <div className='h-60 w-60 flex-col flex justify-center items-center space-y-4 br-transparent backdrop-blur-sm border rounded-2xl back_shadow1'>
+                                <h1 className='text-xl'>Jaypur</h1>
+                                <p>Coming Soon</p>
+                                {/* <button className='bg-[#fd295a] px-3 py-1 rounded-full'>Bet Now</button> */}
+                            </div>
                         </div>
-                    </div>
-                    <div className=' flex justify-around items-center border rounded-lg bg-gray-200'>
-                        <div className='h-60 w-60 flex-col flex justify-center items-center space-y-4'>
-                            <h1>Jaypur</h1>
-                            <p>Coming Soon</p>
-                            {/* <button className='bg-[#fd295a] px-3 py-1 rounded-full'>Bet Now</button> */}
-                        </div>
-                    </div>
-                </location>
+                    </location>
+                </div>
                 <news className='bg-white flex flex-col justify-center items-center space-y-20 my-10'>
                     <div className='bg-white text-gray-700 w-2/4 space-y-5'>
                         <div>
-                            <h1 className='lg:text-4xl text-2xl font-bold text-center text-black'>SPORTS NEWS</h1>
+                            <h1 className='lg:text-4xl text-2xl font-bold text-center text-black'>AMATOR NEWS</h1>
                         </div>
                         <div>
                             <p className='text-justify'>Amator is Kolkata first legal poker room and commenced operations in October last year. They have slowly built a sizeable base of loyal patrons in the city. Vipin Choudhary, a lawyer by profession, in association with two other active members of Kolkata poker community i.e. Diddy and Shashwat operate the Amator poker room.</p>
